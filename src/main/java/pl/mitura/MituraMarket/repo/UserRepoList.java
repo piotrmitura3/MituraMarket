@@ -1,6 +1,6 @@
-package repo;
+package pl.mitura.MituraMarket.repo;
 
-import model.User;
+import pl.mitura.MituraMarket.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -22,13 +22,24 @@ public class UserRepoList {
                 .firstName("Pawel")
                 .lastName("Kowal")
                 .accountNumber("82 1020 5226 0000 6102 0417 7895")
-                .adress(adressRepoList.getAll().get(0))
+                .address(adressRepoList.getAll().get(0))
                 .username("user1")
                 .password("haslo")
                 .build();
 
+        User user2 = User.builder()
+                .id(2)
+                .email("1234@Gmail.com")
+                .firstName("Michal")
+                .lastName("Nowak")
+                .accountNumber("43 1564 1567 6102 0417 7895")
+                .address(adressRepoList.getAll().get(0))
+                .username("user2")
+                .password("jestok")
+                .build();
 
         userList.add(user1);
+        userList.add(user2);
     }
 
     public void addUser(User newUser){

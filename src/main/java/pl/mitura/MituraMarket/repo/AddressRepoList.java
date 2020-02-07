@@ -1,6 +1,6 @@
-package repo;
+package pl.mitura.MituraMarket.repo;
 
-import model.Address;
+import pl.mitura.MituraMarket.model.Address;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;

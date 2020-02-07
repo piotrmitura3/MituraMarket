@@ -1,6 +1,6 @@
-package service;
+package pl.mitura.MituraMarket.service;
 
-import model.Address;
+import pl.mitura.MituraMarket.model.Address;
 
 public class AddressPreparationService {
     static Address addressPreparation(Integer addressId, String city, String street, String zipCode) {

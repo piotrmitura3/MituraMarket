@@ -1,15 +1,14 @@
-package service;
+package pl.mitura.MituraMarket.service;
 
-import model.User;
+import pl.mitura.MituraMarket.model.User;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import repo.UserRepoList;
 
+import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class UserServiceImplTest {
     private UserServiceImpl userServiceImpl;
@@ -19,7 +18,7 @@ class UserServiceImplTest {
         //userServiceImpl = new UserServiceImpl();
     }
 
-    @Test
+    /*@Test
     void shouldAddNewUserToList(){
         //given
         int expectedListSize = 2;
@@ -29,7 +28,7 @@ class UserServiceImplTest {
         int actualListSize = actual.size();
         //then
         assertThat(actualListSize).isEqualTo(expectedListSize);
-    }
+    }*/
 
     @Test
     void shouldRemoveUserFromList(){
@@ -40,6 +39,16 @@ class UserServiceImplTest {
         int actualListSize = actual.size();
         //then
         assertThat(actualListSize).isEqualTo(expectedListSize);
+    }
+
+    @Test
+    void shouldParseStringToLocalDateTime(){
+        //given
+        String date = "2020-01-30T19:52:40.721012200";
+        //when
+        LocalDateTime parse = LocalDateTime.parse(date, DateTimeFormatter.ISO_LOCAL_DATE_TIME);
+        //then
+        assertThat(date).isEqualTo(parse.toString());
     }
 
 

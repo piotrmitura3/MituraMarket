@@ -1,7 +1,7 @@
-package repo;
+package pl.mitura.MituraMarket.repo;
 
 import lombok.Getter;
-import model.Auction;
+import pl.mitura.MituraMarket.model.Auction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -31,7 +31,17 @@ public class AuctionRepoList {
                 .endDate(LocalDateTime.now().plus(10, ChronoUnit.DAYS))
                 .build();
 
+        Auction auction2 = Auction.builder()
+                .id(3)
+                .title("Nazwaaa")
+                .description("opidds")
+                .price(new BigDecimal(12344))
+                .user(this.userRepoList.getAll().get(0))
+                .startDate(LocalDateTime.now())
+                .endDate(LocalDateTime.now().plus(10, ChronoUnit.DAYS))
+                .build();
         auctionList.add(auction1);
+        auctionList.add(auction2);
     }
 
     public void auctionAdd(Auction newAuction){

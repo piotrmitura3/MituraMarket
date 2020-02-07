@@ -1,19 +1,20 @@
-package service;
+package pl.mitura.MituraMarket.service;
 
-import model.Auction;
-import model.User;
-import model.dto.AuctionDto;
+import pl.mitura.MituraMarket.model.Auction;
+import pl.mitura.MituraMarket.model.User;
+import pl.mitura.MituraMarket.model.dto.AuctionDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import repo.AuctionRepoList;
-import repo.UserRepoList;
+import pl.mitura.MituraMarket.repo.AuctionRepoList;
+import pl.mitura.MituraMarket.repo.UserRepoList;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
-import static service.AddressPreparationService.addressPreparation;
-import static service.UserPreparationService.getUser;
+import static pl.mitura.MituraMarket.service.AddressPreparationService.addressPreparation;
+import static pl.mitura.MituraMarket.service.UserPreparationService.getUser;
 
 @Service
 public class AuctionServiceImpl implements AuctionService {
@@ -49,7 +50,7 @@ public class AuctionServiceImpl implements AuctionService {
         return auctionRepoList.getAll();
     }*/
 
-    @Override
+    /*@Override
     public void addAuction(Integer auctionId, String title, String description, Integer userId, String firsrName, String lastName, String username, String password, String email, Integer addressId, String city, String street, String zipCode, String accountNumber, BigDecimal price, LocalDateTime startDate, LocalDateTime endDate) {
         Auction newAuction = auctionPreparation(auctionId, title, description,
                 getUser(userId, firsrName, lastName, username, password, email, accountNumber,
@@ -57,20 +58,24 @@ public class AuctionServiceImpl implements AuctionService {
                 price, startDate, endDate);
 
         auctionRepoList.auctionAdd(newAuction);
-    }
-
-    /*@Override
-    public void addAuction(AuctionDto auctionDto) {
-        Auction newAuction = auctionPreparation(auctionDto.getAuctionId(), auctionDto.getTitle(),auctionDto.getDescription(),
-                userRepoList.getUser(auctionDto.getUserId()), auctionDto.getPrice(), auctionDto.getStartDate(),
-                auctionDto.getEndDate());
-        auctionRepoList.auctionAdd(newAuction);
     }*/
 
+    @Override
+    public void addAuction(AuctionDto auctionDto) {
+        DateTimeFormatter formatter = DateTimeFormatter.ISO_LOCAL_DATE_TIME;
+        LocalDateTime startDate = LocalDateTime.parse(auctionDto.getStartDate(), formatter);
+        LocalDateTime endDate = LocalDateTime.parse(auctionDto.getEndDate(), formatter);
+
+        Auction newAuction = auctionPreparation(auctionDto.getAuctionId(), auctionDto.getTitle(),auctionDto.getDescription(),
+                userRepoList.getUser(auctionDto.getUserId()), auctionDto.getPrice(), startDate,
+                endDate);
+        auctionRepoList.auctionAdd(newAuction);
+
+        //zamienic przychodzacego Stringa z daty( auctionDto) na localdatetime
+    }
 
     @Override
     public List<Auction> removeAuction(Integer id) {
-        //auctionRepoList.auctionRemove(auctionToRemove);
         Auction remove = auctionRepoList.getAll().stream().filter(auction -> auction.getId().equals(id)).findAny().get();
         auctionRepoList.auctionRemove(remove);
         return auctionRepoList.getAll();
@@ -78,12 +83,14 @@ public class AuctionServiceImpl implements AuctionService {
 
     @Override
     public Auction modificationAuction(AuctionDto auctionDto) {
+        LocalDateTime startDate = LocalDateTime.parse(auctionDto.getStartDate());
+        LocalDateTime endDate = LocalDateTime.parse(auctionDto.getEndDate());
         Auction modification = auctionRepoList.getAuction(auctionDto.getAuctionId());
         modification.setTitle(auctionDto.getTitle());
         modification.setDescription(auctionDto.getDescription());
         modification.setPrice(auctionDto.getPrice());
-        modification.setStartDate(auctionDto.getStartDate());
-        modification.setEndDate(auctionDto.getEndDate());
+        modification.setStartDate(startDate);
+        modification.setEndDate(endDate);
         modification.setUser(userRepoList.getUser(auctionDto.getUserId()));
         return auctionRepoList.getAuction(auctionDto.getAuctionId());
     }

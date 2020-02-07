@@ -1,7 +1,7 @@
-package service;
+package pl.mitura.MituraMarket.service;
 
-import model.Address;
-import model.User;
+import pl.mitura.MituraMarket.model.Address;
+import pl.mitura.MituraMarket.model.User;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -15,7 +15,7 @@ public class UserPreparationService {
         newUser.setUsername(username);
         newUser.setPassword(password);
         newUser.setEmail(email);
-        newUser.setAdress(newAddress);
+        newUser.setAddress(newAddress);
         newUser.setAccountNumber(accountAddress);
         return newUser;
     }

@@ -1,18 +1,18 @@
 /*
-package service;
+package pl.mitura.MituraMarket.service;
 
-import model.Address;
-import model.Auction;
-import model.User;
-import model.dto.AuctionDto;
+import pl.mitura.MituraMarket.model.Address;
+import pl.mitura.MituraMarket.model.Auction;
+import pl.mitura.MituraMarket.model.User;
+import pl.mitura.MituraMarket.model.dto.AuctionDto;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
-import repo.AuctionRepoList;
-import repo.UserRepoList;
+import pl.mitura.MituraMarket.repo.AuctionRepoList;
+import pl.mitura.MituraMarket.repo.UserRepoList;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;

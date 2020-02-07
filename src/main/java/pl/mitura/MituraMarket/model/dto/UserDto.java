@@ -1,22 +1,21 @@
-package model;
+package pl.mitura.MituraMarket.model.dto;
 
-import lombok.*;
+import lombok.Builder;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
 
 @Getter
 @Setter
 @Builder
-@NoArgsConstructor
-@AllArgsConstructor
-@ToString
 @EqualsAndHashCode
-public class User {
-    private Integer id;
+public class UserDto {
+    private Integer userId;
     private String firstName;
     private String lastName;
     private String username;
     private String password;
     private String email;
-    private Address adress;
     private String accountNumber;
-
+    private Integer addresId;
 }

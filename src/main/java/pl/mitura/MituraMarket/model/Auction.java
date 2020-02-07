@@ -1,23 +1,25 @@
-package model.dto;
+package pl.mitura.MituraMarket.model;
 
-import lombok.Builder;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-@Getter
 @Setter
+@Getter
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString
 @EqualsAndHashCode
-public class AuctionDto {
-    private Integer auctionId;
+public class Auction {
+    private Integer id;
     private String title;
     private String description;
+    private User user;
     private BigDecimal price;
     private LocalDateTime startDate;
     private LocalDateTime endDate;
-    private Integer userId;
+
+
 }

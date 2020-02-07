@@ -1,4 +1,4 @@
-package model;
+package pl.mitura.MituraMarket.model;
 
 import lombok.*;
 

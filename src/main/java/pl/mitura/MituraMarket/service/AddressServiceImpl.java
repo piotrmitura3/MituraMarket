@@ -1,9 +1,9 @@
-package service;
+package pl.mitura.MituraMarket.service;
 
-import model.Address;
+import pl.mitura.MituraMarket.model.Address;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import repo.AddressRepoList;
+import pl.mitura.MituraMarket.repo.AddressRepoList;
 
 import java.util.List;
 

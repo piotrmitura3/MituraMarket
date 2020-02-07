@@ -1,8 +1,7 @@
-package service;
+package pl.mitura.MituraMarket.service;
 
-import model.Auction;
-import model.User;
-import model.dto.AuctionDto;
+import pl.mitura.MituraMarket.model.Auction;
+import pl.mitura.MituraMarket.model.dto.AuctionDto;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -15,12 +14,12 @@ public interface AuctionService{
                     Integer addressId, String city, String street, String zipCode, String accountNumber,
                     BigDecimal price, LocalDateTime startDate,
                     LocalDateTime endDate);*/
-    void addAuction(Integer auctionId, String title, String description, Integer userId,
+    /*void addAuction(Integer auctionId, String title, String description, Integer userId,
                     String firsrName, String lastName, String username, String password, String email,
                     Integer addressId, String city, String street, String zipCode, String accountNumber,
                     BigDecimal price, LocalDateTime startDate,
-                    LocalDateTime endDate);
-    //void addAuction(AuctionDto auctionDto);
+                    LocalDateTime endDate);*/
+    void addAuction(AuctionDto auctionDto);
     List<Auction> removeAuction(Integer id);
     Auction modificationAuction(AuctionDto auctionDto);
 }

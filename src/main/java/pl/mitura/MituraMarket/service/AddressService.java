@@ -1,6 +1,6 @@
-package service;
+package pl.mitura.MituraMarket.service;
 
-import model.Address;
+import pl.mitura.MituraMarket.model.Address;
 
 import java.util.List;
 
